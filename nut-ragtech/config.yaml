@@ -1,0 +1,25 @@
+name: "NUT Ragtech (driver ragtech)"
+version: "1.0.0"
+slug: "nut_ragtech"
+description: "Network UPS Tools compilado da fonte com o driver ragtech para nobreaks Ragtech (Easy Pro / NEP / TORO / INNERGIE / OneUP)."
+url: "https://github.com/SEU_USUARIO/SEU_REPO"
+arch:
+  - amd64
+  - aarch64
+  - armv7
+init: false
+startup: application
+boot: auto
+full_access: true
+ports:
+  3493/tcp: 3493
+options:
+  port: "/dev/serial/by-id/usb-Ragtech_Sistemas_de_Energia_USB_Serial_Port-if00"
+  password: "troque_por_senha_forte"
+  va: 0
+  allow_shutdown: false
+schema:
+  port: str
+  password: password
+  va: int
+  allow_shutdown: bool
