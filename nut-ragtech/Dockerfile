@@ -28,7 +28,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY --from=build /usr/sbin/upsd /usr/sbin/upsd
 COPY --from=build /usr/sbin/upsdrvctl /usr/sbin/upsdrvctl
 COPY --from=build /usr/libexec/nut /usr/libexec/nut
-COPY --from=build /usr/share/nut /usr/share/nut
 
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
