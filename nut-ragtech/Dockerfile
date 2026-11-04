@@ -1,9 +1,13 @@
 FROM debian:bookworm-slim AS build
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential git autoconf automake libtool pkg-config \
+    build-essential git autoconf automake libtool pkg-config gettext autopoint \
+    bison flex \
     libssl-dev libusb-1.0-0-dev libsnmp-dev libneon27-dev \
-    libwrap0-dev ca-certificates \
+    libwrap0-dev libsystemd-dev libavahi-client-dev \
+    libipmimonitoring-dev libfreeipmi-dev libmodbus-dev \
+    libpowerman0-dev libi2c-dev libgpiod-dev libcppunit-dev \
+    libnss3-dev augeas-tools libaugeas-dev ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /opt
