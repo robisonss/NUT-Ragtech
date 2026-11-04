@@ -1,5 +1,5 @@
 name: "NUT Ragtech (driver ragtech)"
-version: "1.0.4"
+version: "1.0.5"
 slug: "nut_ragtech"
 description: "Network UPS Tools compilado da fonte com o driver ragtech para nobreaks Ragtech (Easy Pro / NEP / TORO / INNERGIE / OneUP)."
 url: "https://github.com/robisonss/NUT-Ragtech"
@@ -11,6 +11,11 @@ init: false
 startup: application
 boot: auto
 full_access: true
+privileged:
+  - SYS_ADMIN
+  - SYS_RAWIO
+  - SYS_PTRACE
+  - DAC_OVERRIDE
 ports:
   3493/tcp: 3493
 options:

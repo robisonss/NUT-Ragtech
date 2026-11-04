@@ -7,7 +7,11 @@ PASSWORD=$(jq -r '.password // "change_me"' "$OPTIONS")
 VA=$(jq -r '.va // 0' "$OPTIONS")
 ALLOW=$(jq -r '.allow_shutdown // false' "$OPTIONS")
 
-mkdir -p /etc/nut /var/state/ups /run/nut
+mkdir -p /etc/nut /run/nut /var/state/ups
+chmod 777 /run/nut /var/state/ups
+
+# Garante acesso à porta serial (container costuma rodar como root aqui)
+chmod 666 "$PORT" 2>/dev/null || true
 
 {
   echo "[ragtech]"
@@ -36,7 +40,7 @@ chown -R root:root /etc/nut
 chmod 640 /etc/nut/upsd.users
 
 echo "Iniciando driver ragtech na porta ${PORT}..."
-upsdrvctl start
+upsdrvctl -u root start
 
 echo "Iniciando upsd..."
-exec upsd -F
+exec upsd -u root -F

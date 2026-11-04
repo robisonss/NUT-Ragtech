@@ -15,7 +15,7 @@ RUN git clone --depth 1 https://github.com/networkupstools/nut.git
 WORKDIR /opt/nut
 ENV PYTHON=python3
 RUN ./autogen.sh \
-    && ./configure --prefix=/usr --sysconfdir=/etc/nut --with-ssl --with-usb --with-python=python3 --with-drvpath=/usr/libexec/nut \
+    && ./configure --prefix=/usr --sysconfdir=/etc/nut --with-ssl --with-usb --with-python=python3 --with-drvpath=/usr/libexec/nut --with-statepath=/run/nut --with-altpidpath=. --with-pidpath=/run/nut \
     && make -j"$(nproc)" \
     && make install
 
